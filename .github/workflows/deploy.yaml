@@ -1,0 +1,31 @@
+name: Deploy to Ghost
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'theme/**'
+      - 'routes.yaml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DO_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H 143.110.131.196 >> ~/.ssh/known_hosts
+      
+      - name: Deploy theme
+        run: rsync -avz --delete --exclude '.git' --exclude '.DS_Store' theme/casper/ root@143.110.131.196:/var/www/ghost/content/themes/casper/
+      
+      - name: Deploy routes
+        run: scp routes.yaml root@143.110.131.196:/var/www/ghost/content/settings/routes.yaml
+      
+      - name: Restart Ghost
+        run: ssh root@143.110.131.196 "cd /var/www/ghost && ghost restart"
