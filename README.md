@@ -1,6 +1,6 @@
 # DisruptiveIoT
 
-> Technical blog exploring the convergence of blockchain, AI, and edge computing for agricultural IoT in Zimbabwe
+> Technical blog exploring the convergence of blockchain, AI, and edge computing for IoT in Zimbabwe
 
 ![Philosophy](https://img.shields.io/badge/Philosophy-Infinite%20Ubuntu-FBBF24?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/Platform-Ghost%20CMS-738a94?style=for-the-badge)
