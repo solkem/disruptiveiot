@@ -1,4 +1,4 @@
-# DisruptiveIoT Ghost Site
+# DisruptiveIoT
 
 > Technical blog exploring the convergence of blockchain, AI, and edge computing for agricultural IoT in Zimbabwe
 
