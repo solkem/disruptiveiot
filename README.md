@@ -32,13 +32,11 @@ DisruptiveIoT is a self-hosted Ghost blog exploring how blockchain, AI, and edge
 
 **Owner:** Solomon Kembo 
 
-**Infrastructure:** Self-hosted on DigitalOcean
-
 ---
 
 ## The baeIoT Ecosystem
 
-Four interconnected pillars forming a comprehensive agricultural IoT solution:
+Four interconnected pillars forming a comprehensive IoT/EoT solution:
 
 ### 🔗 EdgeChain
 **Privacy-preserving agricultural data marketplace for Zimbabwean farmers**
@@ -222,7 +220,7 @@ Code Injection is stored in Ghost's database, not files:
 
 ## Content Series
 
-### EdgeChain Insights (8-part series)
+### EdgeChain Insights (Series)
 
 1. Intelligence at the Edge: Introducing baeIoT
 2. Data-Centrism VS Model-Centrism
