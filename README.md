@@ -30,9 +30,9 @@
 
 DisruptiveIoT is a self-hosted Ghost blog exploring how blockchain, AI, and edge computing (collectively termed "baeIoT") can empower smallholder farmers in Zimbabwe through privacy-preserving agricultural data systems.
 
-**Owner:** Solomon Kembo (Software Engineering Instructor, Severn School, Maryland)
+**Owner:** Solomon Kembo 
 
-**Infrastructure:** Self-hosted on DigitalOcean ($6/month droplet)
+**Infrastructure:** Self-hosted on DigitalOcean
 
 ---
 
@@ -106,12 +106,6 @@ disruptiveiot-ghost/
 
 ---
 
-## Design System
-
-### Inspiration
-- **Cosmos Network** (cosmos.network) — Dark theme, professional blockchain aesthetic
-- **Trust Machines** (trustmachines.co) — Minimalist product cards, clean typography
-
 ### Color Palette
 
 ```css
@@ -169,20 +163,6 @@ disruptiveiot-ghost/
 - Node.js 18+
 - Ghost CLI
 - SSH access to DigitalOcean droplet
-
-### Local Setup
-
-```bash
-# Clone the repository
-git clone <repository-url>
-cd disruptiveiot-ghost
-
-# Install Ghost CLI (if not already installed)
-npm install -g ghost-cli
-
-# Local Ghost instance (optional)
-ghost install local
-```
 
 ### Making Changes
 
