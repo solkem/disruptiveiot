@@ -22,6 +22,13 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H 143.110.131.196 >> ~/.ssh/known_hosts
       
+      - name: Build theme
+        run: |
+          cd theme/casper
+          npm install
+          npm run build
+          cd ../..
+
       - name: Deploy theme
         run: rsync -avz --delete --exclude '.git' --exclude '.DS_Store' theme/casper/ root@143.110.131.196:/var/www/ghost/content/themes/casper/
       
