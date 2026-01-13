@@ -28,4 +28,4 @@ jobs:
         run: scp routes.yaml root@143.110.131.196:/var/www/ghost/content/settings/routes.yaml
       
       - name: Restart Ghost
-        run: ssh root@143.110.131.196 "cd /var/www/ghost && ghost restart"
+        run: ssh root@143.110.131.196 "cd /var/www/ghost && sudo -u ghost ghost restart"
