@@ -30,11 +30,47 @@ jobs:
       
       - name: Deploy code injection
         run: |
-          CONTENT=$(cat code-injection/site-header.html | jq -Rs .)
-          curl -s -X PUT "https://disruptiveiot.org/ghost/api/admin/settings/" \
-            -H "Authorization: Ghost ${{ secrets.GHOST_ADMIN_KEY }}" \
-            -H "Content-Type: application/json" \
-            -d "{\"settings\":[{\"key\":\"codeinjection_head\",\"value\":$CONTENT}]}"
+          npm install jsonwebtoken
+          
+          node << 'EOF'
+          const jwt = require('jsonwebtoken');
+          const https = require('https');
+          const fs = require('fs');
+          
+          const key = "${{ secrets.GHOST_ADMIN_KEY }}";
+          const [id, secret] = key.split(':');
+          
+          const token = jwt.sign({}, Buffer.from(secret, 'hex'), {
+            keyid: id,
+            algorithm: 'HS256',
+            expiresIn: '5m',
+            audience: '/admin/'
+          });
+          
+          const content = fs.readFileSync('code-injection/site-header.html', 'utf8');
+          
+          const data = JSON.stringify({
+            settings: [{ key: 'codeinjection_head', value: content }]
+          });
+          
+          const req = https.request({
+            hostname: 'disruptiveiot.org',
+            path: '/ghost/api/admin/settings/',
+            method: 'PUT',
+            headers: {
+              'Authorization': 'Ghost ' + token,
+              'Content-Type': 'application/json',
+              'Content-Length': data.length
+            }
+          }, (res) => {
+            let body = '';
+            res.on('data', chunk => body += chunk);
+            res.on('end', () => console.log('Response:', res.statusCode, body));
+          });
+          
+          req.write(data);
+          req.end();
+          EOF
       
       - name: Restart Ghost
         run: ssh root@143.110.131.196 "cd /var/www/ghost && sudo -u ghost ghost restart"
