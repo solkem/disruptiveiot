@@ -1,53 +1,370 @@
+/* Disruptive IoT - Professional Dark Theme */
+/* A premium dark theme with gold/amber accents and excellent readability */
 
-    /* Dark theme base */
-    body {
-        background: #0a0a0a !important;
-        color: #e2e8f0 !important;
-    }
+:root {
+    /* Core Colors */
+    --dio-bg-primary: #0d1117;
+    --dio-bg-secondary: #161b22;
+    --dio-bg-tertiary: #21262d;
+    --dio-bg-card: #1c2128;
 
-    /* Navigation - make menu visible */
-    .gh-head {
-        background: #0a0a0a !important;
-    }
+    /* Text Colors - High Contrast */
+    --dio-text-primary: #f0f6fc;
+    --dio-text-secondary: #c9d1d9;
+    --dio-text-muted: #8b949e;
 
-    .gh-head a {
-        color: #ffffff !important;
-    }
+    /* Accent Colors */
+    --dio-accent: #f59e0b;
+    --dio-accent-light: #fbbf24;
+    --dio-accent-dark: #d97706;
 
-    .gh-head-logo,
-    .gh-head-brand a {
-        color: #FBBF24 !important;
-    }
+    /* Semantic Colors */
+    --dio-link: #58a6ff;
+    --dio-success: #3fb950;
+    --dio-border: #30363d;
+}
 
-    /* Article styling */
-    .gh-article-header {
-        background: #0a0a0a !important;
-    }
+/* Base Styles */
+body {
+    background: var(--dio-bg-primary) !important;
+    color: var(--dio-text-primary) !important;
+}
 
-    .gh-article-title {
-        color: #FBBF24 !important;
-    }
+/* Navigation Header */
+.gh-head {
+    background: var(--dio-bg-primary) !important;
+    border-bottom: 1px solid var(--dio-border) !important;
+}
 
-    .gh-article-excerpt {
-        color: #a0aec0 !important;
-    }
+.gh-head a {
+    color: var(--dio-text-primary) !important;
+}
 
-    .gh-content {
-        color: #e2e8f0 !important;
-    }
+.gh-head a:hover {
+    color: var(--dio-accent-light) !important;
+}
 
-    .gh-content h2,
-    .gh-content h3,
-    .gh-content h4 {
-        color: #FBBF24 !important;
-    }
+.gh-head-logo,
+.gh-head-brand a,
+.site-title {
+    color: var(--dio-accent) !important;
+    font-weight: 700 !important;
+}
 
-    .gh-content a {
-        color: #FBBF24 !important;
-    }
+/* Site Header */
+.site-header {
+    background: var(--dio-bg-primary) !important;
+}
 
-    /* Footer */
-    .gh-foot {
-        background: #1a1a2e !important;
-        color: #718096 !important;
-    }
+.site-header-content {
+    color: var(--dio-text-primary) !important;
+}
+
+.site-description {
+    color: var(--dio-text-secondary) !important;
+}
+
+/* Tag/Author Archive Headers */
+.post-card-large .post-card-title,
+.site-archive-header h1,
+h1.post-card-title {
+    color: var(--dio-accent) !important;
+}
+
+.post-card-large .post-card-content-link,
+.site-archive-header .post-card-excerpt {
+    color: var(--dio-text-secondary) !important;
+}
+
+/* Post Cards - The main focus for readability */
+.post-card {
+    background: var(--dio-bg-card) !important;
+    border: 1px solid var(--dio-border) !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.post-card:hover {
+    border-color: var(--dio-accent-dark) !important;
+    transform: translateY(-2px) !important;
+}
+
+.post-card-tags {
+    color: var(--dio-accent) !important;
+}
+
+.post-card-tags a {
+    color: var(--dio-accent) !important;
+}
+
+.post-card-title {
+    color: var(--dio-text-primary) !important;
+    font-weight: 700 !important;
+}
+
+.post-card-title:hover {
+    color: var(--dio-accent-light) !important;
+}
+
+.post-card-excerpt {
+    color: var(--dio-text-secondary) !important;
+    line-height: 1.6 !important;
+}
+
+.post-card-meta {
+    color: var(--dio-text-muted) !important;
+}
+
+.post-card-meta a {
+    color: var(--dio-text-muted) !important;
+}
+
+.post-card-content-link {
+    color: var(--dio-text-primary) !important;
+}
+
+.post-card-content-link:hover .post-card-title {
+    color: var(--dio-accent-light) !important;
+}
+
+/* Featured Badge */
+.post-card-featured {
+    color: var(--dio-accent) !important;
+}
+
+/* Article Pages */
+.article {
+    background: var(--dio-bg-primary) !important;
+}
+
+.article-title {
+    color: var(--dio-text-primary) !important;
+}
+
+.article-excerpt {
+    color: var(--dio-text-secondary) !important;
+}
+
+.article-tag a {
+    color: var(--dio-accent) !important;
+}
+
+.article-byline-meta {
+    color: var(--dio-text-muted) !important;
+}
+
+.article-byline-meta .author-name a {
+    color: var(--dio-text-primary) !important;
+}
+
+/* Article Content */
+.gh-content {
+    color: var(--dio-text-primary) !important;
+}
+
+.gh-content p,
+.gh-content li,
+.gh-content td {
+    color: var(--dio-text-secondary) !important;
+}
+
+.gh-content h1,
+.gh-content h2,
+.gh-content h3,
+.gh-content h4,
+.gh-content h5,
+.gh-content h6 {
+    color: var(--dio-text-primary) !important;
+}
+
+.gh-content a {
+    color: var(--dio-link) !important;
+    text-decoration: underline !important;
+}
+
+.gh-content a:hover {
+    color: var(--dio-accent-light) !important;
+}
+
+.gh-content blockquote {
+    border-left-color: var(--dio-accent) !important;
+    color: var(--dio-text-secondary) !important;
+    background: var(--dio-bg-secondary) !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: 0 8px 8px 0 !important;
+}
+
+.gh-content code {
+    background: var(--dio-bg-tertiary) !important;
+    color: var(--dio-accent-light) !important;
+    padding: 0.2em 0.4em !important;
+    border-radius: 4px !important;
+}
+
+.gh-content pre {
+    background: var(--dio-bg-secondary) !important;
+    border: 1px solid var(--dio-border) !important;
+    border-radius: 8px !important;
+}
+
+.gh-content pre code {
+    background: transparent !important;
+    color: var(--dio-text-secondary) !important;
+}
+
+/* Tables */
+.gh-content table {
+    border-color: var(--dio-border) !important;
+}
+
+.gh-content th {
+    background: var(--dio-bg-tertiary) !important;
+    color: var(--dio-text-primary) !important;
+}
+
+.gh-content td {
+    border-color: var(--dio-border) !important;
+}
+
+/* Tag Page Header */
+.tag-template .post-card-large {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.tag-template .post-card-large .post-card-title {
+    color: var(--dio-accent) !important;
+    font-size: 3rem !important;
+}
+
+.tag-template .post-card-large .post-card-excerpt {
+    color: var(--dio-text-secondary) !important;
+    font-size: 1.2rem !important;
+}
+
+/* Author Page */
+.author-template .author-profile-pic {
+    border: 3px solid var(--dio-accent) !important;
+}
+
+.author-profile-location,
+.author-profile-meta {
+    color: var(--dio-text-muted) !important;
+}
+
+/* Pagination */
+.pagination {
+    color: var(--dio-text-muted) !important;
+}
+
+.pagination a {
+    color: var(--dio-text-primary) !important;
+}
+
+.pagination a:hover {
+    color: var(--dio-accent-light) !important;
+}
+
+/* Footer */
+.site-footer {
+    background: var(--dio-bg-secondary) !important;
+    border-top: 1px solid var(--dio-border) !important;
+}
+
+.site-footer a {
+    color: var(--dio-text-secondary) !important;
+}
+
+.site-footer a:hover {
+    color: var(--dio-accent-light) !important;
+}
+
+.site-footer .copyright {
+    color: var(--dio-text-muted) !important;
+}
+
+/* Buttons */
+.gh-head-button {
+    background: var(--dio-accent) !important;
+    color: var(--dio-bg-primary) !important;
+    font-weight: 600 !important;
+}
+
+.gh-head-button:hover {
+    background: var(--dio-accent-light) !important;
+}
+
+/* Subscribe Form */
+.footer-cta-button {
+    background: var(--dio-bg-secondary) !important;
+    border-color: var(--dio-border) !important;
+    color: var(--dio-text-primary) !important;
+}
+
+.footer-cta-button span {
+    background: var(--dio-accent) !important;
+    color: var(--dio-bg-primary) !important;
+}
+
+.footer-cta-title {
+    color: var(--dio-text-primary) !important;
+}
+
+/* Mobile Burger Menu */
+.gh-burger::before,
+.gh-burger::after {
+    background-color: var(--dio-text-primary) !important;
+}
+
+/* Search */
+.gh-search svg {
+    color: var(--dio-text-primary) !important;
+}
+
+/* Dropdown */
+.gh-dropdown {
+    background: var(--dio-bg-secondary) !important;
+    border: 1px solid var(--dio-border) !important;
+}
+
+.gh-dropdown li a {
+    color: var(--dio-text-primary) !important;
+}
+
+.gh-dropdown li a:hover {
+    background: var(--dio-bg-tertiary) !important;
+    color: var(--dio-accent-light) !important;
+}
+
+/* Dark Mode Overrides */
+html.dark-mode body,
+html.auto-color body {
+    background: var(--dio-bg-primary) !important;
+    color: var(--dio-text-primary) !important;
+}
+
+/* Ensure post feed has proper spacing */
+.post-feed {
+    gap: 2rem !important;
+}
+
+/* Image Captions */
+figcaption {
+    color: var(--dio-text-muted) !important;
+}
+
+/* HR */
+hr {
+    border-color: var(--dio-border) !important;
+}
+
+/* Comments Section */
+.comments h2 {
+    color: var(--dio-text-primary) !important;
+}
+
+.comments .comment-count {
+    color: var(--dio-text-muted) !important;
+}

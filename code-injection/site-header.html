@@ -1,55 +1,96 @@
 <!-- Deployed automatically via GitHub Actions using jwt-->
 <style>
-    /* Dark theme base */
-    body {
-        background: #0a0a0a !important;
-        color: #e2e8f0 !important;
+    /* Disruptive IoT - Professional Dark Theme (Code Injection) */
+    /* This supplements the theme's custom.css for immediate styling */
+
+    :root {
+        --dio-bg-primary: #0d1117;
+        --dio-bg-secondary: #161b22;
+        --dio-bg-tertiary: #21262d;
+        --dio-bg-card: #1c2128;
+        --dio-text-primary: #f0f6fc;
+        --dio-text-secondary: #c9d1d9;
+        --dio-text-muted: #8b949e;
+        --dio-accent: #f59e0b;
+        --dio-accent-light: #fbbf24;
+        --dio-border: #30363d;
+        --dio-link: #58a6ff;
     }
 
-    /* Navigation - make menu visible */
+    body {
+        background: var(--dio-bg-primary) !important;
+        color: var(--dio-text-primary) !important;
+    }
+
     .gh-head {
-        background: #0a0a0a !important;
+        background: var(--dio-bg-primary) !important;
+        border-bottom: 1px solid var(--dio-border) !important;
     }
 
     .gh-head a {
-        color: #ffffff !important;
+        color: var(--dio-text-primary) !important;
+    }
+
+    .gh-head a:hover {
+        color: var(--dio-accent-light) !important;
     }
 
     .gh-head-logo,
     .gh-head-brand a {
-        color: #FBBF24 !important;
+        color: var(--dio-accent) !important;
     }
 
-    /* Article styling */
-    .gh-article-header {
-        background: #0a0a0a !important;
+    .post-card {
+        background: var(--dio-bg-card) !important;
+        border: 1px solid var(--dio-border) !important;
+        border-radius: 8px !important;
+        padding: 1.5rem !important;
     }
 
-    .gh-article-title {
-        color: #FBBF24 !important;
+    .post-card:hover {
+        border-color: var(--dio-accent) !important;
     }
 
-    .gh-article-excerpt {
-        color: #a0aec0 !important;
+    .post-card-title {
+        color: var(--dio-text-primary) !important;
+    }
+
+    .post-card-excerpt {
+        color: var(--dio-text-secondary) !important;
+    }
+
+    .post-card-meta {
+        color: var(--dio-text-muted) !important;
+    }
+
+    .post-card-tags,
+    .post-card-tags a {
+        color: var(--dio-accent) !important;
     }
 
     .gh-content {
-        color: #e2e8f0 !important;
+        color: var(--dio-text-primary) !important;
     }
 
-    .gh-content h2,
-    .gh-content h3,
-    .gh-content h4 {
-        color: #FBBF24 !important;
+    .gh-content p,
+    .gh-content li {
+        color: var(--dio-text-secondary) !important;
     }
 
     .gh-content a {
-        color: #FBBF24 !important;
+        color: var(--dio-link) !important;
     }
 
-    /* Footer */
-    .gh-foot {
-        background: #1a1a2e !important;
-        color: #718096 !important;
+    .site-footer {
+        background: var(--dio-bg-secondary) !important;
+        border-top: 1px solid var(--dio-border) !important;
+    }
+
+    .site-footer a {
+        color: var(--dio-text-secondary) !important;
+    }
+
+    .site-footer .copyright {
+        color: var(--dio-text-muted) !important;
     }
 </style>
