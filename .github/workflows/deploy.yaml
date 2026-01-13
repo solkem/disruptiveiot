@@ -6,6 +6,7 @@ on:
     paths:
       - 'theme/**'
       - 'routes.yaml'
+      - 'code-injection/**'
   workflow_dispatch:
 
 jobs:
@@ -26,6 +27,14 @@ jobs:
       
       - name: Deploy routes
         run: scp routes.yaml root@143.110.131.196:/var/www/ghost/content/settings/routes.yaml
+      
+      - name: Deploy code injection
+        run: |
+          CONTENT=$(cat code-injection/site-header.html | jq -Rs .)
+          curl -s -X PUT "https://disruptiveiot.org/ghost/api/admin/settings/" \
+            -H "Authorization: Ghost ${{ secrets.GHOST_ADMIN_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"settings\":[{\"key\":\"codeinjection_head\",\"value\":$CONTENT}]}"
       
       - name: Restart Ghost
         run: ssh root@143.110.131.196 "cd /var/www/ghost && sudo -u ghost ghost restart"
