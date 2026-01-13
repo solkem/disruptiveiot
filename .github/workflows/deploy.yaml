@@ -79,5 +79,5 @@ jobs:
           req.end();
           EOF
       
-      - name: Restart Ghost
-        run: ssh root@143.110.131.196 "cd /var/www/ghost && sudo -u ghost ghost restart"
+      - name: Fix permissions and Restart Ghost
+        run: ssh root@143.110.131.196 "chown -R ghost:ghost /var/www/ghost/content/themes/casper && cd /var/www/ghost && sudo -u ghost ghost restart"
