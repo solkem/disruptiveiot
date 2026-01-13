@@ -1,582 +1,1005 @@
-{{!-- 
-  DisruptiveIoT Custom Homepage Template
+{{!--
+DisruptiveIoT Custom Homepage Template
 --}}
 
 <!DOCTYPE html>
 <html lang="{{@site.locale}}">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{@site.title}} — The Economy of Things</title>
-    <meta name="description" content="IoT connected devices. EoT disrupts how they earn.">
-    
-    <link rel="icon" href="{{@site.icon}}" type="image/png">
-    <link rel="canonical" href="{{@site.url}}">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    {{ghost_head}}
-    
-<style>
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{@site.title}} — The Economy of Things</title>
+  <meta name="description" content="IoT connected devices. EoT disrupts how they earn.">
 
-:root {
-  --dio-bg: #0a0a0a;
-  --dio-bg-subtle: #1a1a2e;
-  --dio-bg-card: #16162a;
-  --dio-gold: #FBBF24;
-  --dio-gold-dim: rgba(251, 191, 36, 0.7);
-  --dio-gold-glow: rgba(251, 191, 36, 0.15);
-  --edgechain: #059669;
-  --msingi: #d97706;
-  --ndani: #0891b2;
-  --midnight: #a855f7;
-  --text-primary: #e2e8f0;
-  --text-secondary: #a0aec0;
-  --text-muted: #718096;
-  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
+  <link rel="icon" href="{{@site.icon}}" type="image/png">
+  <link rel="canonical" href="{{@site.url}}">
 
-*, *::before, *::after { box-sizing: border-box; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--dio-bg);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  line-height: 1.6;
-}
+  {{ghost_head}}
 
-.dio-homepage { width: 100%; min-height: 100vh; }
-.dio-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  <style>
+    @media (prefers-reduced-motion: reduce) {
 
-.dio-hero {
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 4rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
 
-.dio-hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(ellipse at center, var(--dio-gold-glow) 0%, transparent 70%);
-  pointer-events: none;
-}
+    :root {
+      --dio-bg: #0a0a0a;
+      --dio-bg-subtle: #1a1a2e;
+      --dio-bg-card: #16162a;
+      --dio-gold: #FBBF24;
+      --dio-gold-dim: rgba(251, 191, 36, 0.7);
+      --dio-gold-glow: rgba(251, 191, 36, 0.15);
+      --edgechain: #059669;
+      --msingi: #d97706;
+      --ndani: #0891b2;
+      --midnight: #a855f7;
+      --text-primary: #e2e8f0;
+      --text-secondary: #a0aec0;
+      --text-muted: #718096;
+      --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
 
-.dio-hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 800;
-  color: var(--dio-gold);
-  margin: 0 0 0.5rem 0;
-  letter-spacing: -0.02em;
-  position: relative;
-  z-index: 1;
-}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
-.dio-hero h1 .eot-acronym { font-weight: 400; font-size: 0.7em; opacity: 0.85; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--dio-bg);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+    }
 
-.dio-hero .tagline {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: var(--text-primary);
-  margin: 0 0 0.75rem 0;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  position: relative;
-  z-index: 1;
-}
+    .dio-homepage {
+      width: 100%;
+      min-height: 100vh;
+    }
 
-.dio-hero .subtitle {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  color: var(--text-secondary);
-  margin: 0 0 3rem 0;
-  max-width: 600px;
-  position: relative;
-  z-index: 1;
-}
+    .dio-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
 
-.dio-pillars {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin: 2rem 0 3rem 0;
-  position: relative;
-  z-index: 1;
-}
+    .dio-hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
 
-@media (max-width: 768px) { .dio-pillars { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .dio-pillars { grid-template-columns: 1fr; } }
+    .dio-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at center, var(--dio-gold-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-.dio-pillar {
-  background: var(--dio-bg-card);
-  border: 1px solid rgba(251, 191, 36, 0.2);
-  border-radius: 12px;
-  padding: 1.5rem 1rem;
-  text-align: center;
-  transition: border-color 0.3s ease, transform 0.3s ease;
-}
+    .dio-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      color: var(--dio-gold);
+      margin: 0 0 0.5rem 0;
+      letter-spacing: -0.02em;
+      position: relative;
+      z-index: 1;
+    }
 
-.dio-pillar:hover { border-color: var(--dio-gold); transform: translateY(-4px); }
-.dio-pillar-icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
-.dio-pillar h3 { color: var(--dio-gold); font-size: 1.1rem; font-weight: 700; margin: 0 0 0.25rem 0; }
-.dio-pillar p { color: var(--text-muted); font-size: 0.85rem; margin: 0; }
+    .dio-hero h1 .eot-acronym {
+      font-weight: 400;
+      font-size: 0.7em;
+      opacity: 0.85;
+    }
 
-.dio-hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
+    .dio-hero .tagline {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-primary);
+      margin: 0 0 0.75rem 0;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      position: relative;
+      z-index: 1;
+    }
 
-.dio-btn {
-  padding: 0.875rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
+    .dio-hero .subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--text-secondary);
+      margin: 0 0 3rem 0;
+      max-width: 600px;
+      position: relative;
+      z-index: 1;
+    }
 
-.dio-btn-primary { background: var(--dio-gold); color: var(--dio-bg); border: 2px solid var(--dio-gold); }
-.dio-btn-primary:hover { background: transparent; color: var(--dio-gold); }
-.dio-btn-secondary { background: transparent; color: var(--dio-gold); border: 2px solid var(--dio-gold-dim); }
-.dio-btn-secondary:hover { border-color: var(--dio-gold); background: var(--dio-gold-glow); }
+    .dio-pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0 3rem 0;
+      position: relative;
+      z-index: 1;
+    }
 
-.dio-badge {
-  margin-top: 3rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--dio-bg-card);
-  border: 1px solid var(--dio-gold-dim);
-  border-radius: 50px;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  position: relative;
-  z-index: 1;
-}
+    @media (max-width: 768px) {
+      .dio-pillars {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-.dio-badge strong { color: var(--dio-gold); }
+    @media (max-width: 480px) {
+      .dio-pillars {
+        grid-template-columns: 1fr;
+      }
+    }
 
-.dio-proof { background: var(--dio-bg-subtle); padding: 5rem 2rem; }
-.dio-proof h2 { text-align: center; font-size: 2rem; color: var(--text-primary); margin: 0 0 3rem 0; }
+    .dio-pillar {
+      background: var(--dio-bg-card);
+      border: 1px solid rgba(251, 191, 36, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
 
-.dio-proof-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+    .dio-pillar:hover {
+      border-color: var(--dio-gold);
+      transform: translateY(-4px);
+    }
 
-.dio-proof-card {
-  background: var(--dio-bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 1.75rem;
-  transition: border-color 0.3s ease;
-}
+    a.dio-pillar {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
 
-.dio-proof-card:hover { border-color: var(--dio-gold-dim); }
-.dio-proof-card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
-.dio-proof-card h3 { color: var(--dio-gold); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 0.5rem 0; }
-.dio-proof-card .metric { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.25rem 0; }
-.dio-proof-card .detail { color: var(--text-secondary); font-size: 0.9rem; margin: 0 0 1rem 0; }
-.dio-proof-card .sub-items { list-style: none; padding: 0; margin: 0 0 1rem 0; }
-.dio-proof-card .sub-items li { color: var(--text-muted); font-size: 0.85rem; padding: 0.25rem 0; }
-.dio-proof-card .cta-link { color: var(--dio-gold); font-size: 0.85rem; text-decoration: none; font-weight: 600; }
-.dio-proof-card .cta-link:hover { text-decoration: underline; }
+    .dio-pillar-icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
 
-.dio-featured { padding: 4rem 2rem 2rem 2rem; background: var(--dio-bg); }
-.dio-featured-header { margin-bottom: 1.5rem; }
-.dio-featured-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--dio-gold); font-weight: 600; }
+    .dio-pillar h3 {
+      color: var(--dio-gold);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0 0 0.25rem 0;
+    }
 
-.dio-featured-article {
-  background: linear-gradient(135deg, var(--dio-bg-card) 0%, var(--dio-bg-subtle) 100%);
-  border: 1px solid var(--dio-gold-dim);
-  border-radius: 16px;
-  padding: 2.5rem;
-  max-width: 900px;
-  position: relative;
-  overflow: hidden;
-}
+    .dio-pillar p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin: 0;
+    }
 
-.dio-featured-article::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--dio-gold); }
-.dio-featured-article .tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.25rem 0.75rem; border-radius: 50px; display: inline-block; margin-bottom: 1rem; background: rgba(251, 191, 36, 0.15); color: var(--dio-gold); }
-.dio-featured-article h3 { font-size: 1.75rem; color: var(--text-primary); margin: 0 0 1rem 0; line-height: 1.3; }
-.dio-featured-article h3 a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
-.dio-featured-article h3 a:hover { color: var(--dio-gold); }
-.dio-featured-article .excerpt { color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin: 0 0 1.5rem 0; }
-.dio-featured-article .meta { color: var(--text-muted); font-size: 0.85rem; }
-.dio-featured-article .read-more { display: inline-block; margin-top: 1rem; color: var(--dio-gold); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-.dio-featured-article .read-more:hover { text-decoration: underline; }
-.dio-featured.hidden { display: none; }
+    .dio-hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
 
-.dio-writing { padding: 5rem 2rem; background: var(--dio-bg); }
-.dio-writing h2 { text-align: center; font-size: 2rem; color: var(--text-primary); margin: 0 0 0.5rem 0; }
-.dio-writing .section-subtitle { text-align: center; color: var(--text-secondary); margin: 0 0 3rem 0; }
+    .dio-btn {
+      padding: 0.875rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
 
-.dio-articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto 2rem auto;
-}
+    .dio-btn-primary {
+      background: var(--dio-gold);
+      color: var(--dio-bg);
+      border: 2px solid var(--dio-gold);
+    }
 
-.dio-article-card {
-  background: var(--dio-bg-card);
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
+    .dio-btn-primary:hover {
+      background: transparent;
+      color: var(--dio-gold);
+    }
 
-.dio-article-card:hover { transform: translateY(-4px); border-color: var(--dio-gold-dim); }
-.dio-article-card .card-content { padding: 1.5rem; }
-.dio-article-card .tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.25rem 0.75rem; border-radius: 50px; display: inline-block; margin-bottom: 0.75rem; }
-.dio-article-card .tag.industry { background: rgba(251, 191, 36, 0.15); color: var(--dio-gold); }
-.dio-article-card .tag.project { background: rgba(5, 150, 105, 0.15); color: var(--edgechain); }
-.dio-article-card .tag.research { background: rgba(168, 85, 247, 0.15); color: var(--midnight); }
-.dio-article-card .tag.general { background: rgba(255, 255, 255, 0.1); color: var(--text-secondary); }
-.dio-article-card h3 { font-size: 1.15rem; color: var(--text-primary); margin: 0 0 0.5rem 0; line-height: 1.4; }
-.dio-article-card h3 a { color: inherit; text-decoration: none; }
-.dio-article-card h3 a:hover { color: var(--dio-gold); }
-.dio-article-card .excerpt { color: var(--text-secondary); font-size: 0.9rem; margin: 0 0 1rem 0; }
-.dio-article-card .meta { color: var(--text-muted); font-size: 0.8rem; }
-.dio-view-all { text-align: center; }
-.dio-loading { text-align: center; color: var(--text-muted); padding: 3rem; grid-column: 1 / -1; }
-.dio-no-posts { text-align: center; color: var(--text-secondary); padding: 2rem; grid-column: 1 / -1; }
+    .dio-btn-secondary {
+      background: transparent;
+      color: var(--dio-gold);
+      border: 2px solid var(--dio-gold-dim);
+    }
 
-.dio-ecosystem { padding: 5rem 2rem; background: var(--dio-bg-subtle); }
-.dio-ecosystem h2 { text-align: center; font-size: 2rem; color: var(--text-primary); margin: 0 0 0.5rem 0; }
-.dio-ecosystem .section-subtitle { text-align: center; color: var(--text-secondary); margin: 0 0 3rem 0; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .dio-btn-secondary:hover {
+      border-color: var(--dio-gold);
+      background: var(--dio-gold-glow);
+    }
 
-.dio-projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  max-width: 1000px;
-  margin: 0 auto 2rem auto;
-}
+    .dio-badge {
+      margin-top: 3rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--dio-bg-card);
+      border: 1px solid var(--dio-gold-dim);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      position: relative;
+      z-index: 1;
+    }
 
-.dio-project-card {
-  background: var(--dio-bg-card);
-  border-radius: 12px;
-  padding: 2rem;
-  border-left: 4px solid;
-  transition: transform 0.3s ease;
-}
+    .dio-badge strong {
+      color: var(--dio-gold);
+    }
 
-.dio-project-card:hover { transform: translateY(-4px); }
-.dio-project-card.edgechain { border-left-color: var(--edgechain); }
-.dio-project-card.msingi { border-left-color: var(--msingi); }
-.dio-project-card.ndani { border-left-color: var(--ndani); }
-.dio-project-card h3 { font-size: 1.25rem; margin: 0 0 0.5rem 0; }
-.dio-project-card.edgechain h3 { color: var(--edgechain); }
-.dio-project-card.msingi h3 { color: var(--msingi); }
-.dio-project-card.ndani h3 { color: var(--ndani); }
-.dio-project-card p { color: var(--text-secondary); font-size: 0.95rem; margin: 0 0 1rem 0; }
-.dio-project-card a { color: var(--text-primary); font-size: 0.85rem; text-decoration: none; font-weight: 600; }
-.dio-project-card a:hover { color: var(--dio-gold); }
-.dio-dura-cta { text-align: center; margin-top: 2rem; }
-.dio-dura-cta a { color: var(--midnight); font-size: 1rem; text-decoration: none; padding: 0.75rem 1.5rem; border: 1px solid var(--midnight); border-radius: 8px; display: inline-block; transition: all 0.3s ease; }
-.dio-dura-cta a:hover { background: var(--midnight); color: white; }
+    .dio-proof {
+      background: var(--dio-bg-subtle);
+      padding: 5rem 2rem;
+    }
 
-.dio-newsletter { padding: 5rem 2rem; background: var(--dio-bg); text-align: center; }
-.dio-newsletter h2 { font-size: 1.75rem; color: var(--text-primary); margin: 0 0 0.5rem 0; }
-.dio-newsletter p { color: var(--text-secondary); margin: 0 0 2rem 0; }
-.dio-newsletter-form { display: flex; gap: 0.75rem; max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
-.dio-newsletter-form input[type="email"] { flex: 1; min-width: 250px; padding: 0.875rem 1rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: var(--dio-bg-card); color: var(--text-primary); font-size: 1rem; }
-.dio-newsletter-form input[type="email"]::placeholder { color: var(--text-muted); }
-.dio-newsletter-form input[type="email"]:focus { outline: none; border-color: var(--dio-gold); }
+    .dio-proof h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--text-primary);
+      margin: 0 0 3rem 0;
+    }
 
-.dio-footer { padding: 3rem 2rem; background: var(--dio-bg-subtle); text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); }
-.dio-footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
-.dio-footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; }
-.dio-footer-links a:hover { color: var(--dio-gold); }
-.dio-footer-copy { color: var(--text-muted); font-size: 0.85rem; }
-</style>
+    .dio-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .dio-proof-card {
+      background: var(--dio-bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .dio-proof-card:hover {
+      border-color: var(--dio-gold-dim);
+    }
+
+    .dio-proof-card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .dio-proof-card h3 {
+      color: var(--dio-gold);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .dio-proof-card .metric {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 0.25rem 0;
+    }
+
+    .dio-proof-card .detail {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0 0 1rem 0;
+    }
+
+    .dio-proof-card .sub-items {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1rem 0;
+    }
+
+    .dio-proof-card .sub-items li {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding: 0.25rem 0;
+    }
+
+    .dio-proof-card .cta-link {
+      color: var(--dio-gold);
+      font-size: 0.85rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .dio-proof-card .cta-link:hover {
+      text-decoration: underline;
+    }
+
+    .dio-featured {
+      padding: 4rem 2rem 2rem 2rem;
+      background: var(--dio-bg);
+    }
+
+    .dio-featured-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .dio-featured-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--dio-gold);
+      font-weight: 600;
+    }
+
+    .dio-featured-article {
+      background: linear-gradient(135deg, var(--dio-bg-card) 0%, var(--dio-bg-subtle) 100%);
+      border: 1px solid var(--dio-gold-dim);
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 900px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dio-featured-article::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--dio-gold);
+    }
+
+    .dio-featured-article .tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 1rem;
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--dio-gold);
+    }
+
+    .dio-featured-article h3 {
+      font-size: 1.75rem;
+      color: var(--text-primary);
+      margin: 0 0 1rem 0;
+      line-height: 1.3;
+    }
+
+    .dio-featured-article h3 a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .dio-featured-article h3 a:hover {
+      color: var(--dio-gold);
+    }
+
+    .dio-featured-article .excerpt {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 0 0 1.5rem 0;
+    }
+
+    .dio-featured-article .meta {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .dio-featured-article .read-more {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--dio-gold);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .dio-featured-article .read-more:hover {
+      text-decoration: underline;
+    }
+
+    .dio-featured.hidden {
+      display: none;
+    }
+
+    .dio-writing {
+      padding: 5rem 2rem;
+      background: var(--dio-bg);
+    }
+
+    .dio-writing h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--text-primary);
+      margin: 0 0 0.5rem 0;
+    }
+
+    .dio-writing .section-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      margin: 0 0 3rem 0;
+    }
+
+    .dio-articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 2rem auto;
+    }
+
+    .dio-article-card {
+      background: var(--dio-bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .dio-article-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--dio-gold-dim);
+    }
+
+    .dio-article-card .card-content {
+      padding: 1.5rem;
+    }
+
+    .dio-article-card .tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+
+    .dio-article-card .tag.industry {
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--dio-gold);
+    }
+
+    .dio-article-card .tag.project {
+      background: rgba(5, 150, 105, 0.15);
+      color: var(--edgechain);
+    }
+
+    .dio-article-card .tag.research {
+      background: rgba(168, 85, 247, 0.15);
+      color: var(--midnight);
+    }
+
+    .dio-article-card .tag.general {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-secondary);
+    }
+
+    .dio-article-card h3 {
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      margin: 0 0 0.5rem 0;
+      line-height: 1.4;
+    }
+
+    .dio-article-card h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .dio-article-card h3 a:hover {
+      color: var(--dio-gold);
+    }
+
+    .dio-article-card .excerpt {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin: 0 0 1rem 0;
+    }
+
+    .dio-article-card .meta {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .dio-view-all {
+      text-align: center;
+    }
+
+    .dio-loading {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 3rem;
+      grid-column: 1 / -1;
+    }
+
+    .dio-no-posts {
+      text-align: center;
+      color: var(--text-secondary);
+      padding: 2rem;
+      grid-column: 1 / -1;
+    }
+
+    .dio-ecosystem {
+      padding: 5rem 2rem;
+      background: var(--dio-bg-subtle);
+    }
+
+    .dio-ecosystem h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--text-primary);
+      margin: 0 0 0.5rem 0;
+    }
+
+    .dio-ecosystem .section-subtitle {
+      text-align: center;
+      color: var(--text-secondary);
+      margin: 0 0 3rem 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .dio-projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto 2rem auto;
+    }
+
+    .dio-project-card {
+      background: var(--dio-bg-card);
+      border-radius: 12px;
+      padding: 2rem;
+      border-left: 4px solid;
+      transition: transform 0.3s ease;
+    }
+
+    .dio-project-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .dio-project-card.edgechain {
+      border-left-color: var(--edgechain);
+    }
+
+    .dio-project-card.msingi {
+      border-left-color: var(--msingi);
+    }
+
+    .dio-project-card.ndani {
+      border-left-color: var(--ndani);
+    }
+
+    .dio-project-card h3 {
+      font-size: 1.25rem;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .dio-project-card.edgechain h3 {
+      color: var(--edgechain);
+    }
+
+    .dio-project-card.msingi h3 {
+      color: var(--msingi);
+    }
+
+    .dio-project-card.ndani h3 {
+      color: var(--ndani);
+    }
+
+    .dio-project-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin: 0 0 1rem 0;
+    }
+
+    .dio-project-card a {
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .dio-project-card a:hover {
+      color: var(--dio-gold);
+    }
+
+    .dio-dura-cta {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .dio-dura-cta a {
+      color: var(--midnight);
+      font-size: 1rem;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--midnight);
+      border-radius: 8px;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .dio-dura-cta a:hover {
+      background: var(--midnight);
+      color: white;
+    }
+
+    .dio-newsletter {
+      padding: 5rem 2rem;
+      background: var(--dio-bg);
+      text-align: center;
+    }
+
+    .dio-newsletter h2 {
+      font-size: 1.75rem;
+      color: var(--text-primary);
+      margin: 0 0 0.5rem 0;
+    }
+
+    .dio-newsletter p {
+      color: var(--text-secondary);
+      margin: 0 0 2rem 0;
+    }
+
+    .dio-newsletter-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 500px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .dio-newsletter-form input[type="email"] {
+      flex: 1;
+      min-width: 250px;
+      padding: 0.875rem 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: var(--dio-bg-card);
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .dio-newsletter-form input[type="email"]::placeholder {
+      color: var(--text-muted);
+    }
+
+    .dio-newsletter-form input[type="email"]:focus {
+      outline: none;
+      border-color: var(--dio-gold);
+    }
+
+    .dio-footer {
+      padding: 3rem 2rem;
+      background: var(--dio-bg-subtle);
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .dio-footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .dio-footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .dio-footer-links a:hover {
+      color: var(--dio-gold);
+    }
+
+    .dio-footer-copy {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 
 <body>
-<div class="dio-homepage">
-  
-  <section class="dio-hero">
-    <h1>The Economy of Things <span class="eot-acronym">(EoT)</span></h1>
-    <p class="tagline">IoT connected devices. EoT disrupts how they earn.</p>
-    <p class="subtitle">When devices become economic participants, everything changes.</p>
-    
-    <div class="dio-pillars">
-      <div class="dio-pillar">
-        <span class="dio-pillar-icon">⛓️</span>
-        <h3>Blockchain</h3>
-        <p>Economic Agency</p>
-      </div>
-      <div class="dio-pillar">
-        <span class="dio-pillar-icon">🧠</span>
-        <h3>AI</h3>
-        <p>Cognitive Agency</p>
-      </div>
-      <div class="dio-pillar">
-        <span class="dio-pillar-icon">📡</span>
-        <h3>Edge</h3>
-        <p>Operational Agency</p>
-      </div>
-      <div class="dio-pillar">
-        <span class="dio-pillar-icon">🌐</span>
-        <h3>IoT</h3>
-        <p>Physical Reality</p>
-      </div>
-    </div>
-    
-    <div class="dio-hero-ctas">
-      <a href="/about" class="dio-btn dio-btn-primary">Why I Build</a>
-      <a href="/work-with-me" class="dio-btn dio-btn-secondary">Work With Me</a>
-    </div>
-    
-    <div class="dio-badge">
-      Where <strong>Sovereign Innovation</strong> Meets <strong>Ubuntu</strong>
-    </div>
-  </section>
-  
-  <section class="dio-proof">
-    <div class="dio-container">
-      <h2>Proof of Work</h2>
-      
-      <div class="dio-proof-grid">
-        
-        <div class="dio-proof-card">
-          <div class="icon">🏆</div>
-          <h3>Hackathon</h3>
-          <p class="metric">Top 16 of 46 Teams</p>
-          <p class="detail">Midnight Summit, London (Nov 2025)</p>
-          <a href="https://edgechain-midnight-ui.fly.dev" class="cta-link" target="_blank">View Demo →</a>
-        </div>
-        
-        <div class="dio-proof-card">
-          <div class="icon">📄</div>
-          <h3>Published Research</h3>
-          <p class="metric">2 Peer-Reviewed Papers</p>
-          <p class="detail">Emerald Publishing (2023)</p>
-          <ul class="sub-items">
-            <li>• Privacy-preserving FL architecture</li>
-            <li>• Blockchain device authentication</li>
-          </ul>
-          <a href="https://www.emerald.com/insight/search?q=solomon+kembo" class="cta-link" target="_blank">Read Papers →</a>
-        </div>
-        
-        <div class="dio-proof-card">
-          <div class="icon">💻</div>
-          <h3>Open Source</h3>
-          <p class="metric">115+ Repositories</p>
-          <p class="detail">github.com/solkem</p>
-          <ul class="sub-items">
-            <li>• EdgeChain MVP (Live)</li>
-            <li>• Mbare Makerspace Projects</li>
-          </ul>
-          <a href="https://github.com/solkem" class="cta-link" target="_blank">View Code →</a>
-        </div>
-        
-        <div class="dio-proof-card">
-          <div class="icon">🌾</div>
-          <h3>Knowledge Base</h3>
-          <p class="metric">Dura — The Knowledge Granary</p>
-          <p class="detail">Interactive R&D learning platform</p>
-          <ul class="sub-items">
-            <li>• Midnight / ZK Concepts</li>
-            <li>• Federated Learning</li>
-            <li>• IoT & Edge Computing</li>
-          </ul>
-          <a href="https://dura.dev" class="cta-link" target="_blank">Explore Dura →</a>
-        </div>
-        
-        <div class="dio-proof-card">
-          <div class="icon">🌍</div>
-          <h3>Impact</h3>
-          <p class="metric">Zimbabwe's First IoT Makerspace</p>
-          <p class="detail">St. Peter's Mbare (2016-2022)</p>
-          <ul class="sub-items">
-            <li>• UZ Research Expo 1st Place (2019)</li>
-            <li>• Internet Society Grant Recipient</li>
-          </ul>
-        </div>
-        
-        <div class="dio-proof-card">
-          <div class="icon">✍️</div>
-          <h3>Writing</h3>
-          <p class="metric">EdgeChain Insights Series</p>
-          <p class="detail">7 Articles on LinkedIn</p>
-          <p class="detail" style="margin-top: 0.5rem;">Translating complex tech into compelling narratives</p>
-          <a href="https://linkedin.com/in/solomonkembo" class="cta-link" target="_blank">Read Series →</a>
-        </div>
-        
-      </div>
-    </div>
-  </section>
+  <div class="dio-homepage">
 
-  <section class="dio-featured">
-    <div class="dio-container">
-      <div class="dio-featured-header">
-        <span class="dio-featured-label">📌 Featured</span>
-      </div>
-      <div class="dio-featured-article" id="featured-post">
-        <div class="dio-loading">Loading featured article...</div>
-      </div>
-    </div>
-  </section>
+    <section class="dio-hero">
+      <h1>The Economy of Things <span class="eot-acronym">(EoT)</span></h1>
+      <p class="tagline">IoT connected devices. EoT disrupts how they earn.</p>
+      <p class="subtitle">When devices become economic participants, everything changes.</p>
 
-  <section class="dio-writing">
-    <div class="dio-container">
-      <h2>Latest Thinking</h2>
-      <p class="section-subtitle">Industry analysis, project updates, and research insights</p>
-      
-      <div class="dio-articles-grid" id="latest-posts">
-        <div class="dio-loading">Loading articles...</div>
+      <div class="dio-pillars">
+        <a href="/tag/blockchain/" class="dio-pillar">
+          <span class="dio-pillar-icon">⛓️</span>
+          <h3>Blockchain</h3>
+          <p>Economic Agency</p>
+        </a>
+        <a href="/tag/ai/" class="dio-pillar">
+          <span class="dio-pillar-icon">🧠</span>
+          <h3>AI</h3>
+          <p>Cognitive Agency</p>
+        </a>
+        <a href="/tag/edge/" class="dio-pillar">
+          <span class="dio-pillar-icon">📡</span>
+          <h3>Edge</h3>
+          <p>Operational Agency</p>
+        </a>
+        <a href="/tag/iot/" class="dio-pillar">
+          <span class="dio-pillar-icon">🌐</span>
+          <h3>IoT</h3>
+          <p>Physical Reality</p>
+        </a>
       </div>
-      
-      <div class="dio-view-all">
-        <a href="/writing" class="dio-btn dio-btn-secondary">View All Writing →</a>
-      </div>
-    </div>
-  </section>
-  
-  <section class="dio-ecosystem">
-    <div class="dio-container">
-      <h2>What I'm Building</h2>
-      <p class="section-subtitle">Privacy-preserving agricultural AI for smallholder farmers in Zimbabwe</p>
-      
-      <div class="dio-projects-grid">
-        
-        <div class="dio-project-card edgechain">
-          <h3>EdgeChain</h3>
-          <p>Farmer-facing application. PWA + SMS interface. Federated learning. Governance DAO.</p>
-          <a href="/projects/edgechain">Learn more →</a>
-        </div>
-        
-        <div class="dio-project-card msingi">
-          <h3>Msingi</h3>
-          <p>Abstract ZK protocols. BRACE registration. ACR rewards. Bounded autonomy.</p>
-          <a href="/projects/msingi">Learn more →</a>
-        </div>
-        
-        <div class="dio-project-card ndani">
-          <h3>Ndani</h3>
-          <p>Hardware architecture. ESP32-S3 + ATECC608B. Farmer-owned proof servers.</p>
-          <a href="/projects/ndani">Learn more →</a>
-        </div>
-        
-      </div>
-      
-      <div class="dio-dura-cta">
-        <a href="https://dura.dev">🌾 Deep technical learning at Dura — The Knowledge Granary →</a>
-      </div>
-    </div>
-  </section>
-  
-  <section class="dio-newsletter">
-    <div class="dio-container">
-      <h2>Stay Updated</h2>
-      <p>Monthly insights on the Economy of Things — blockchain, AI, edge computing, and IoT.</p>
-      
-      <form class="dio-newsletter-form" action="#" method="post">
-        <input type="email" placeholder="your@email.com" required>
-        <button type="submit" class="dio-btn dio-btn-primary">Subscribe</button>
-      </form>
-    </div>
-  </section>
-  
-  <footer class="dio-footer">
-    <div class="dio-footer-links">
-      <a href="/about">Why I Build</a>
-      <a href="/writing">Writing</a>
-      <a href="/projects">Projects</a>
-      <a href="/research">Research</a>
-      <a href="/work-with-me">Work With Me</a>
-      <a href="https://github.com/solkem" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/solomonkembo" target="_blank">LinkedIn</a>
-    </div>
-    <p class="dio-footer-copy">© 2026 Solomon Kembo. Bringing Decentralized Solutions to Decentralized People.</p>
-  </footer>
-  
-</div>
 
-{{ghost_foot}}
+      <div class="dio-hero-ctas">
+        <a href="/about" class="dio-btn dio-btn-primary">Why I Build</a>
+        <a href="/work-with-me" class="dio-btn dio-btn-secondary">Work With Me</a>
+      </div>
 
-<script>
-(function() {
-  const API_URL = '{{@site.url}}/ghost/api/content/posts/';
-  const API_KEY = '1bc786f8a146164437a6af72db';
-  
-  async function loadFeaturedPost() {
-    const container = document.getElementById('featured-post');
-    const section = document.querySelector('.dio-featured');
-    
-    try {
-      const response = await fetch(
-        `${API_URL}?key=${API_KEY}&limit=1&filter=featured:true&include=tags&fields=title,url,excerpt,published_at,slug`
-      );
-      const data = await response.json();
-      
-      if (data.posts && data.posts.length > 0) {
-        const post = data.posts[0];
-        const tag = post.tags?.[0];
-        const tagName = tag ? tag.name : 'Featured';
-        const date = new Date(post.published_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-        
-        container.innerHTML = `
+      <div class="dio-badge">
+        Where <strong>Sovereign Innovation</strong> Meets <strong>Ubuntu</strong>
+      </div>
+    </section>
+
+    <section class="dio-proof">
+      <div class="dio-container">
+        <h2>Proof of Work</h2>
+
+        <div class="dio-proof-grid">
+
+          <div class="dio-proof-card">
+            <div class="icon">🏆</div>
+            <h3>Hackathon</h3>
+            <p class="metric">Top 16 of 46 Teams</p>
+            <p class="detail">Midnight Summit, London (Nov 2025)</p>
+            <a href="https://edgechain-midnight-ui.fly.dev" class="cta-link" target="_blank">View Demo →</a>
+          </div>
+
+          <div class="dio-proof-card">
+            <div class="icon">📄</div>
+            <h3>Published Research</h3>
+            <p class="metric">2 Peer-Reviewed Papers</p>
+            <p class="detail">Emerald Publishing (2023)</p>
+            <ul class="sub-items">
+              <li>• Privacy-preserving FL architecture</li>
+              <li>• Blockchain device authentication</li>
+            </ul>
+            <a href="https://www.emerald.com/insight/search?q=solomon+kembo" class="cta-link" target="_blank">Read
+              Papers →</a>
+          </div>
+
+          <div class="dio-proof-card">
+            <div class="icon">💻</div>
+            <h3>Open Source</h3>
+            <p class="metric">115+ Repositories</p>
+            <p class="detail">github.com/solkem</p>
+            <ul class="sub-items">
+              <li>• EdgeChain MVP (Live)</li>
+              <li>• Mbare Makerspace Projects</li>
+            </ul>
+            <a href="https://github.com/solkem" class="cta-link" target="_blank">View Code →</a>
+          </div>
+
+          <div class="dio-proof-card">
+            <div class="icon">🌾</div>
+            <h3>Knowledge Base</h3>
+            <p class="metric">Dura — The Knowledge Granary</p>
+            <p class="detail">Interactive R&D learning platform</p>
+            <ul class="sub-items">
+              <li>• Midnight / ZK Concepts</li>
+              <li>• Federated Learning</li>
+              <li>• IoT & Edge Computing</li>
+            </ul>
+            <a href="https://dura.dev" class="cta-link" target="_blank">Explore Dura →</a>
+          </div>
+
+          <div class="dio-proof-card">
+            <div class="icon">🌍</div>
+            <h3>Impact</h3>
+            <p class="metric">Zimbabwe's First IoT Makerspace</p>
+            <p class="detail">St. Peter's Mbare (2016-2022)</p>
+            <ul class="sub-items">
+              <li>• UZ Research Expo 1st Place (2019)</li>
+              <li>• Internet Society Grant Recipient</li>
+            </ul>
+          </div>
+
+          <div class="dio-proof-card">
+            <div class="icon">✍️</div>
+            <h3>Writing</h3>
+            <p class="metric">EdgeChain Insights Series</p>
+            <p class="detail">7 Articles on LinkedIn</p>
+            <p class="detail" style="margin-top: 0.5rem;">Translating complex tech into compelling narratives</p>
+            <a href="https://linkedin.com/in/solomonkembo" class="cta-link" target="_blank">Read Series →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="dio-featured">
+      <div class="dio-container">
+        <div class="dio-featured-header">
+          <span class="dio-featured-label">📌 Featured</span>
+        </div>
+        <div class="dio-featured-article" id="featured-post">
+          <div class="dio-loading">Loading featured article...</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dio-writing">
+      <div class="dio-container">
+        <h2>Latest Thinking</h2>
+        <p class="section-subtitle">Industry analysis, project updates, and research insights</p>
+
+        <div class="dio-articles-grid" id="latest-posts">
+          <div class="dio-loading">Loading articles...</div>
+        </div>
+
+        <div class="dio-view-all">
+          <a href="/writing" class="dio-btn dio-btn-secondary">View All Writing →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="dio-ecosystem">
+      <div class="dio-container">
+        <h2>What I'm Building</h2>
+        <p class="section-subtitle">Privacy-preserving agricultural AI for smallholder farmers in Zimbabwe</p>
+
+        <div class="dio-projects-grid">
+
+          <div class="dio-project-card edgechain">
+            <h3>EdgeChain</h3>
+            <p>Farmer-facing application. PWA + SMS interface. Federated learning. Governance DAO.</p>
+            <a href="/projects/edgechain">Learn more →</a>
+          </div>
+
+          <div class="dio-project-card msingi">
+            <h3>Msingi</h3>
+            <p>Abstract ZK protocols. BRACE registration. ACR rewards. Bounded autonomy.</p>
+            <a href="/projects/msingi">Learn more →</a>
+          </div>
+
+          <div class="dio-project-card ndani">
+            <h3>Ndani</h3>
+            <p>Hardware architecture. ESP32-S3 + ATECC608B. Farmer-owned proof servers.</p>
+            <a href="/projects/ndani">Learn more →</a>
+          </div>
+
+        </div>
+
+        <div class="dio-dura-cta">
+          <a href="https://dura.dev">🌾 Deep technical learning at Dura — The Knowledge Granary →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="dio-newsletter">
+      <div class="dio-container">
+        <h2>Stay Updated</h2>
+        <p>Monthly insights on the Economy of Things — blockchain, AI, edge computing, and IoT.</p>
+
+        <form class="dio-newsletter-form" action="#" method="post">
+          <input type="email" placeholder="your@email.com" required>
+          <button type="submit" class="dio-btn dio-btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="dio-footer">
+      <div class="dio-footer-links">
+        <a href="/about">Why I Build</a>
+        <a href="/writing">Writing</a>
+        <a href="/projects">Projects</a>
+        <a href="/research">Research</a>
+        <a href="/work-with-me">Work With Me</a>
+        <a href="https://github.com/solkem" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/solomonkembo" target="_blank">LinkedIn</a>
+      </div>
+      <p class="dio-footer-copy">© 2026 Solomon Kembo. Bringing Decentralized Solutions to Decentralized People.</p>
+    </footer>
+
+  </div>
+
+  {{ghost_foot}}
+
+  <script>
+    (function () {
+      const API_URL = '{{@site.url}}/ghost/api/content/posts/';
+      const API_KEY = '1bc786f8a146164437a6af72db';
+
+      async function loadFeaturedPost() {
+        const container = document.getElementById('featured-post');
+        const section = document.querySelector('.dio-featured');
+
+        try {
+          const response = await fetch(
+            `${API_URL}?key=${API_KEY}&limit=1&filter=featured:true&include=tags&fields=title,url,excerpt,published_at,slug`
+          );
+          const data = await response.json();
+
+          if (data.posts && data.posts.length > 0) {
+            const post = data.posts[0];
+            const tag = post.tags?.[0];
+            const tagName = tag ? tag.name : 'Featured';
+            const date = new Date(post.published_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+            container.innerHTML = `
           <span class="tag">${tagName}</span>
           <h3><a href="${post.url}">${post.title}</a></h3>
           <p class="excerpt">${post.excerpt || ''}</p>
           <span class="meta">${date}</span>
           <a href="${post.url}" class="read-more">Read Article →</a>
         `;
-        
-        window.featuredPostSlug = post.slug;
-      } else {
-        section.classList.add('hidden');
-      }
-    } catch (error) {
-      console.error('Failed to load featured post:', error);
-      section.classList.add('hidden');
-    }
-  }
-  
-  async function loadLatestPosts() {
-    const container = document.getElementById('latest-posts');
-    
-    try {
-      await new Promise(resolve => setTimeout(resolve, 100));
-      
-      const response = await fetch(
-        `${API_URL}?key=${API_KEY}&limit=4&include=tags&fields=title,url,excerpt,published_at,slug`
-      );
-      const data = await response.json();
-      
-      if (data.posts && data.posts.length > 0) {
-        let posts = data.posts;
-        if (window.featuredPostSlug) {
-          posts = posts.filter(p => p.slug !== window.featuredPostSlug);
+
+            window.featuredPostSlug = post.slug;
+          } else {
+            section.classList.add('hidden');
+          }
+        } catch (error) {
+          console.error('Failed to load featured post:', error);
+          section.classList.add('hidden');
         }
-        posts = posts.slice(0, 3);
-        
-        container.innerHTML = posts.map(post => {
-          const tag = post.tags?.[0];
-          const tagClass = tag ? tag.slug : 'general';
-          const tagName = tag ? tag.name : 'Article';
-          const date = new Date(post.published_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-          
-          return `
+      }
+
+      async function loadLatestPosts() {
+        const container = document.getElementById('latest-posts');
+
+        try {
+          await new Promise(resolve => setTimeout(resolve, 100));
+
+          const response = await fetch(
+            `${API_URL}?key=${API_KEY}&limit=4&include=tags&fields=title,url,excerpt,published_at,slug`
+          );
+          const data = await response.json();
+
+          if (data.posts && data.posts.length > 0) {
+            let posts = data.posts;
+            if (window.featuredPostSlug) {
+              posts = posts.filter(p => p.slug !== window.featuredPostSlug);
+            }
+            posts = posts.slice(0, 3);
+
+            container.innerHTML = posts.map(post => {
+              const tag = post.tags?.[0];
+              const tagClass = tag ? tag.slug : 'general';
+              const tagName = tag ? tag.name : 'Article';
+              const date = new Date(post.published_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+
+              return `
             <div class="dio-article-card">
               <div class="card-content">
                 <span class="tag ${tagClass}">${tagName}</span>
@@ -586,27 +1009,28 @@ body {
               </div>
             </div>
           `;
-        }).join('');
-      } else {
-        container.innerHTML = '<p class="dio-no-posts">No posts yet. Check back soon!</p>';
+            }).join('');
+          } else {
+            container.innerHTML = '<p class="dio-no-posts">No posts yet. Check back soon!</p>';
+          }
+        } catch (error) {
+          console.error('Failed to load posts:', error);
+          container.innerHTML = '<p class="dio-no-posts">Unable to load posts.</p>';
+        }
       }
-    } catch (error) {
-      console.error('Failed to load posts:', error);
-      container.innerHTML = '<p class="dio-no-posts">Unable to load posts.</p>';
-    }
-  }
-  
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      loadFeaturedPost();
-      loadLatestPosts();
-    });
-  } else {
-    loadFeaturedPost();
-    loadLatestPosts();
-  }
-})();
-</script>
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          loadFeaturedPost();
+          loadLatestPosts();
+        });
+      } else {
+        loadFeaturedPost();
+        loadLatestPosts();
+      }
+    })();
+  </script>
 
 </body>
+
 </html>
