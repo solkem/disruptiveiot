@@ -1,6 +1,26 @@
 routes:
   /:
     template: custom-home
+  
+  # Ecosystem & Projects (nested URLs)
+  /ecosystem/:
+    data: page.ecosystem
+    template: page
+  /projects/:
+    data: page.projects
+    template: page
+  /projects/edgechain/:
+    data: page.projects-edgechain
+    template: page
+  /projects/msingi/:
+    data: page.projects-msingi
+    template: page
+  /projects/ndani/:
+    data: page.projects-ndani
+    template: page
+  /projects/dura/:
+    data: page.projects-dura
+    template: page
 
 collections:
   /writing/:
