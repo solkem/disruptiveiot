@@ -215,16 +215,43 @@ h1.post-card-title {
 
 /* Tables */
 .gh-content table {
-    border-color: var(--dio-border) !important;
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin: 1.5rem 0 !important;
+    border: 1px solid var(--dio-border) !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+.gh-content thead {
+    background: var(--dio-bg-tertiary) !important;
 }
 
 .gh-content th {
     background: var(--dio-bg-tertiary) !important;
     color: var(--dio-text-primary) !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+    padding: 0.75rem 1rem !important;
+    border: 1px solid var(--dio-border) !important;
+}
+
+.gh-content tbody tr {
+    background: var(--dio-bg-secondary) !important;
+}
+
+.gh-content tbody tr:nth-child(even) {
+    background: var(--dio-bg-card) !important;
 }
 
 .gh-content td {
-    border-color: var(--dio-border) !important;
+    color: var(--dio-text-secondary) !important;
+    padding: 0.75rem 1rem !important;
+    border: 1px solid var(--dio-border) !important;
+}
+
+.gh-content tbody tr:hover {
+    background: var(--dio-bg-tertiary) !important;
 }
 
 /* Tag Page Header */
