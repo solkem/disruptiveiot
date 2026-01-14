@@ -215,6 +215,7 @@ h1.post-card-title {
 
 /* Tables */
 .gh-content table {
+    display: table !important;
     border-collapse: collapse !important;
     width: 100% !important;
     table-layout: fixed !important;
