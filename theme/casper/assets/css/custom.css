@@ -254,6 +254,12 @@ h1.post-card-title {
     background: var(--dio-bg-tertiary) !important;
 }
 
+/* Remove Casper default gradient overlays on table cells */
+.gh-content table:not(.gist table) td:first-child,
+.gh-content table:not(.gist table) td:last-child {
+    background-image: none !important;
+}
+
 /* Tag Page Header */
 .tag-template .post-card-large {
     background: transparent !important;
