@@ -217,6 +217,7 @@ h1.post-card-title {
 .gh-content table {
     border-collapse: collapse !important;
     width: 100% !important;
+    table-layout: fixed !important;
     margin: 1.5rem 0 !important;
     border: 1px solid var(--dio-border) !important;
     border-radius: 8px !important;
