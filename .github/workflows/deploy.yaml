@@ -55,10 +55,13 @@ jobs:
             audience: '/admin/'
           });
           
-          const content = fs.readFileSync('code-injection/site-header.html', 'utf8');
+          const head = fs.readFileSync('code-injection/site-header.html', 'utf8');
           
           const data = JSON.stringify({
-            settings: [{ key: 'codeinjection_head', value: content }]
+            settings: [
+              { key: 'codeinjection_head', value: head },
+              { key: 'codeinjection_foot', value: '' }
+            ]
           });
           
           const req = https.request({
