@@ -68,7 +68,11 @@ jobs:
           DB_USER=$(node -e "console.log(require('./config.production.json').database.connection.user)")
           DB_PASSWORD=$(node -e "console.log(require('./config.production.json').database.connection.password || '')")
           DB_NAME=$(node -e "console.log(require('./config.production.json').database.connection.database)")
-          mysql -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < /tmp/disruptiveiot-settings.sql
+          if [ -n "$DB_PASSWORD" ]; then
+            mysql -u "$DB_USER" -p"$DB_PASSWORD" "$DB_NAME" < /tmp/disruptiveiot-settings.sql
+          else
+            mysql -u "$DB_USER" "$DB_NAME" < /tmp/disruptiveiot-settings.sql
+          fi
           EOF
       
       - name: Fix permissions and Restart Ghost
