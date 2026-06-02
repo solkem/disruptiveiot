@@ -136,22 +136,45 @@ h1.post-card-title {
 /* Article Pages */
 .article {
     background: var(--dio-bg-primary) !important;
-}
-
-.article-title {
     color: var(--dio-text-primary) !important;
 }
 
-.article-excerpt {
+.post-template .site-content,
+.page-template .site-content {
+    background: var(--dio-bg-primary) !important;
+    color: var(--dio-text-primary) !important;
+}
+
+.article-title,
+.post-template .article-title,
+.page-template .article-title,
+.article-header h1 {
+    color: var(--dio-text-primary) !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+}
+
+.article-excerpt,
+.post-template .article-excerpt,
+.page-template .article-excerpt {
     color: var(--dio-text-secondary) !important;
+    opacity: 1 !important;
 }
 
 .article-tag a {
     color: var(--dio-accent) !important;
 }
 
-.article-byline-meta {
+.article-byline,
+.article-byline-meta,
+.article-byline-content,
+.article-byline-meta .author-name,
+.article-byline-meta .author-name a,
+.byline-meta-content,
+.byline-meta-date,
+.byline-reading-time {
     color: var(--dio-text-muted) !important;
+    opacity: 1 !important;
 }
 
 .article-byline-meta .author-name a {
