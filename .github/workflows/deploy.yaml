@@ -25,10 +25,8 @@ jobs:
       
       - name: Build theme
         run: |
-          cd theme/casper
-          npm install
-          npm run build
-          cd ../..
+          test -s theme/casper/assets/built/screen.css
+          test -s theme/casper/assets/built/casper.js
 
       - name: Deploy theme
         run: rsync -avz --delete --exclude '.git' --exclude '.DS_Store' theme/casper/ root@143.110.131.196:/var/www/ghost/content/themes/casper/
