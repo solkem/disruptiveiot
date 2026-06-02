@@ -34,71 +34,35 @@ jobs:
       - name: Deploy routes
         run: scp routes.yaml root@143.110.131.196:/var/www/ghost/content/settings/routes.yaml
       
-      - name: Deploy code injection
+      - name: Prepare Ghost settings SQL
         run: |
-          npm install jsonwebtoken
-          
           node << 'EOF'
-          const jwt = require('jsonwebtoken');
-          const https = require('https');
           const fs = require('fs');
-          
-          const key = "${{ secrets.GHOST_ADMIN_KEY }}";
-          const [id, secret] = key.split(':');
-          
-          const token = jwt.sign({}, Buffer.from(secret, 'hex'), {
-            keyid: id,
-            algorithm: 'HS256',
-            expiresIn: '5m',
-            audience: '/admin/'
-          });
-          
+
+          function sqlString(value) {
+            return "'" + value
+              .replace(/\\/g, "\\\\")
+              .replace(/'/g, "\\'")
+              .replace(/\0/g, "\\0")
+              .replace(/\n/g, "\\n")
+              .replace(/\r/g, "\\r")
+              .replace(/\x1a/g, "\\Z") + "'";
+          }
+
           const head = fs.readFileSync('code-injection/site-header.html', 'utf8');
-          
-          const data = JSON.stringify({
-            settings: [
-              { key: 'codeinjection_head', value: head },
-              { key: 'codeinjection_foot', value: '' }
-            ]
-          });
-          
-          const req = https.request({
-            hostname: 'disruptiveiot.org',
-            path: '/ghost/api/admin/settings/',
-            method: 'PUT',
-            headers: {
-              'Authorization': 'Ghost ' + token,
-              'Content-Type': 'application/json',
-              'Content-Length': data.length
-            }
-          }, (res) => {
-            let body = '';
-            res.on('data', chunk => body += chunk);
-            res.on('end', () => {
-              console.log('Response:', res.statusCode, body);
-              if (res.statusCode < 200 || res.statusCode >= 300) {
-                process.exit(1);
-              }
-            });
-          });
-          
-          req.on('error', (error) => {
-            console.error(error);
-            process.exit(1);
-          });
+          const sql = [
+            "UPDATE settings SET value='casper' WHERE `key`='active_theme';",
+            `UPDATE settings SET value=${sqlString(head)} WHERE \`key\`='codeinjection_head';`,
+            "UPDATE settings SET value='' WHERE `key`='codeinjection_foot';"
+          ].join('\n') + '\n';
 
-          req.write(data);
-          req.end();
+          fs.writeFileSync('/tmp/disruptiveiot-settings.sql', sql);
           EOF
 
-      - name: Force active theme and clear footer injection
+      - name: Deploy Ghost settings
         run: |
-          ssh root@143.110.131.196 << 'EOF'
-          mysql -u root ghost_production << 'SQL'
-          UPDATE settings SET value='casper' WHERE `key`='active_theme';
-          UPDATE settings SET value='' WHERE `key`='codeinjection_foot';
-          SQL
-          EOF
+          scp /tmp/disruptiveiot-settings.sql root@143.110.131.196:/tmp/disruptiveiot-settings.sql
+          ssh root@143.110.131.196 "mysql -u root ghost_production < /tmp/disruptiveiot-settings.sql"
       
       - name: Fix permissions and Restart Ghost
         run: ssh root@143.110.131.196 "chown -R ghost:ghost /var/www/ghost/content/themes/casper && cd /var/www/ghost && sudo -u ghost ghost restart"
